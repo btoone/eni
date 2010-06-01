@@ -1,0 +1,21 @@
+
+# Features #
+
+* bundler
+* script to run app
+* docs for script options, include help
+* installer?
+
+# Tests #
+
+* How do I test for and raise errors (error on dir not found, EN app not found)
+* How do I get my test to create a sample file to use when creating a note
+* How do I test each elem in a list is a certain type of object
+* De-couple first test from my desktop directory
+* How do I ask the user for input (want to know but not needed anymore for this app)
+* How do I test that the created note's text/title matches the file's text/name
+* 
+
+# Code #
+
+* Dir.entries returns a full list of entries and not just files
