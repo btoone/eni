@@ -19,3 +19,23 @@
 # Code #
 
 * Dir.entries returns a full list of entries and not just files
+
+# RubyOSA Notes #
+
+
+Create notes:
+
+    require 'rbosa'
+    app = OSA.app('Evernote')
+    app.create_note(:with_text => "hello world", :title => "Test Note", :notebook => "Wedding")
+
+Get list of notes:
+
+    require 'rbosa'
+    notebooks = app.notebooks.get       # => need to call get() on OSA objects to get normal objects
+    notebooks.each { |n| puts n.name }
+    
+    # use the OSA convenience method #every to collect list attributes
+    app.notebooks.every(:name)
+
+    
