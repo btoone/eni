@@ -46,11 +46,20 @@ module EvernoteImporter
       importer_list_of_files.should == actual_list_of_files
     end
     
+    # Using a mock or stub to stand-in for the filesystem
+    it "returns a list of files" do
+      # Dir.glob(File.join(@directory, "*.*"))
+      # Dir.stub(:glob).and_return(['file1', 'file2'])  # => stub
+      Dir.should_receive(:glob).and_return(['file1', 'file2'])  # => mock expectation
+      @importer.files.should == ['file1', 'file2']
+    end
+    
     it "should create a new note in evernote for each file"
       # how to make sure external app is called either via rubyosa or %x[shell cmd]
       
       # test that you have the same number of new notes as elements in the files array
       
       # test that each note created has the same text as the file
+      
   end
 end
