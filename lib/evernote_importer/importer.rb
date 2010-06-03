@@ -1,13 +1,13 @@
 module EvernoteImporter
   class Importer
-    # require 'find'
+    require 'rbosa'
     
     attr_reader :directory
-    # attr_writer :directory
+    # attr_writer :evernote
     
     def initialize(directory)
       self.exists?(directory)
-      # puts "Enter the location of the files:"
+      @evernote = OSA.app('Evernote')
     end
     
     def directory=(directory)
@@ -20,6 +20,12 @@ module EvernoteImporter
       Dir.glob(File.join(@directory, "*.*"))
     end
     
+    def create
+      self.files.each do |f|
+        @evernote.create_note(:from_file => f)
+      end
+    end
+    
     protected
     
     def exists?(directory)
@@ -27,8 +33,7 @@ module EvernoteImporter
         @directory = directory
       else
         @directory = nil
-      end      
+      end
     end
-    
   end
 end

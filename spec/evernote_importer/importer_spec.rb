@@ -54,12 +54,30 @@ module EvernoteImporter
       @importer.files.should == ['file1', 'file2']
     end
     
-    it "should create a new note in evernote for each file"
+    it "should create a new note in evernote for each file" do
+      pending("Not Yet Implemented")
       # how to make sure external app is called either via rubyosa or %x[shell cmd]
       
       # test that you have the same number of new notes as elements in the files array
       
       # test that each note created has the same text as the file
+    end
+    
+    it "can create a new note" do
+      # # from_file should be the only required option.  also want to test for with title = filename and notebook
+      # # form cmd line args
+      # evernote = double('evernote')
+      # evernote.should_receive(:create_note).and_return(mock("Note"))
+      # # evernote.should_receive(:create_note).with(:from_file).and_return(mock("Note"))
+      # @importer.evernote = evernote
+      # @importer.create # make !
       
+      app = OSA.app('Evernote')
+      app.should_receive(:create_note).and_return(mock("Note"))
+      @importer.create
+    end
+    
+    it "errors when notebook doesn't exist"
+    
   end
 end
