@@ -27,6 +27,14 @@ Create notes:
     require 'rbosa'
     app = OSA.app('Evernote')
     app.create_note(:with_text => "hello world", :title => "Test Note", :notebook => "Wedding")
+    
+The create_note method returns a note object (OSA::Evernote::Note).  The :notebook must be the exact name (case sensitive) or else it will error with:
+
+    RuntimeError: application returned error: siInitSPTblErr / dsIllInstErr / scArbNBErr / ESRCH (3), with message: Notebook names must be unique
+      from /usr/local/lib/ruby/gems/1.8/gems/rubyosa-0.4.0/lib/rbosa.rb:773:in `__send_event__'
+      from /usr/local/lib/ruby/gems/1.8/gems/rubyosa-0.4.0/lib/rbosa.rb:773:in `create_note'
+      from (irb):4
+
 
 Get list of notes:
 
