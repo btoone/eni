@@ -82,13 +82,8 @@ module EvernoteImporter
         # from_file should be the only required option. also want to test for with title = filename
         # and notebook from the cmd line args
         
-        # # when OSA.app is called, specify that a mocked evernote object is returned
-        # evernote = mock('Evernote')
-        # OSA.should_receive(:app).with('Evernote').and_return(evernote)
-        
         # use the evernote mock to make sure evernote.create_note is called
-        @evernote.should_receive(:create_note).with(:with_text => 'Howdy')
-        # evernote.should_receive(:create_note).with(:from_file).and_return(mock("Note"))
+        @evernote.should_receive(:create_note).with(:from_file => anything)
         
         @importer = Importer.new("/Users/Brandon/Desktop")
         @importer.create

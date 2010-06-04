@@ -21,9 +21,9 @@ module EvernoteImporter
     end
     
     def create
-      @app.create_note(:with_text => 'Howdy')
+      @app.create_note(:from_file => '/Users/Brandon/Desktop/statement_spec.rb')
       # self.files.each do |f|
-      #   @evernote.create_note(:from_file => f)
+      #   @app.create_note(:from_file => f)
       # end
     end
     
