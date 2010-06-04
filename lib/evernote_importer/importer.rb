@@ -7,7 +7,7 @@ module EvernoteImporter
     
     def initialize(directory)
       self.exists?(directory)
-      @evernote = OSA.app('Evernote')
+      @app = OSA.app('Evernote')
     end
     
     def directory=(directory)
@@ -21,7 +21,7 @@ module EvernoteImporter
     end
     
     def create
-      @evernote.create_note(:with_text => 'Howdy')
+      @app.create_note(:with_text => 'Howdy')
       # self.files.each do |f|
       #   @evernote.create_note(:from_file => f)
       # end
