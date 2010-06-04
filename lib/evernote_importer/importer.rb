@@ -21,9 +21,10 @@ module EvernoteImporter
     end
     
     def create
-      self.files.each do |f|
-        @evernote.create_note(:from_file => f)
-      end
+      @evernote.create_note(:with_text => 'Howdy')
+      # self.files.each do |f|
+      #   @evernote.create_note(:from_file => f)
+      # end
     end
     
     protected

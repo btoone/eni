@@ -63,18 +63,24 @@ module EvernoteImporter
       # test that each note created has the same text as the file
     end
     
+    # test the create method. make sure it can create a note in evernote for each file.
     it "can create a new note" do
-      # # from_file should be the only required option.  also want to test for with title = filename and notebook
-      # # form cmd line args
-      # evernote = double('evernote')
-      # evernote.should_receive(:create_note).and_return(mock("Note"))
-      # # evernote.should_receive(:create_note).with(:from_file).and_return(mock("Note"))
-      # @importer.evernote = evernote
-      # @importer.create # make !
+      # from_file should be the only required option. also want to test for with title = filename
+      # and notebook from the cmd line args
       
-      app = OSA.app('Evernote')
-      app.should_receive(:create_note).and_return(mock("Note"))
-      @importer.create
+      # when OSA.app is called, specify that a mocked evernote object is returned
+      evernote = mock('Evernote')
+      OSA.should_receive(:app).with('Evernote').and_return(evernote)
+      
+      # use the evernote mock to make sure evernote.create_note is called
+      evernote.should_receive(:create_note).with(:with_text => 'Howdy')
+      # evernote.should_receive(:create_note).with(:from_file).and_return(mock("Note"))
+      
+      # I don't understand why I have to create a new instance for this to work
+      # why doesn't the before block's @importer work?
+      # what is a better way?
+      i2 = Importer.new("/Users/Brandon/Desktop")
+      i2.create
     end
     
     it "errors when notebook doesn't exist"
